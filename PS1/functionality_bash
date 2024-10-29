@@ -1,0 +1,2 @@
+echo 'PS1="Type anything and press enter to admit that you'\''ve lost: "' >> ~/.bashrc
+source ~/.bashrc
